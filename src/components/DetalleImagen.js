@@ -24,17 +24,15 @@ const DetalleImagen = () => {
         const consultarApiDetalle = async () => {
 
             const key = '16125508-505736a2c06bd0bf8c7dd51f7';
-            const url = `https://pixabay.com/api/?key=${key}/photo&id=${id}`;
+            const url = `https://pixabay.com/api/?key=${key}&id=${id}`;
 
             const respuesta = await fetch(url);
             const resultado = await respuesta.json();
-            gurdarDetalle(resultado.hits)
-
-
+            gurdarDetalle(resultado.hits);
         }
         consultarApiDetalle();
-    }, [detalle]);
-
+    },[id]);
+    
     return (
         <div className="container mt-5">
             {detalle.map((deta) => (
@@ -64,7 +62,7 @@ const DetalleImagen = () => {
                                     <button title="comentarios"type="button" className="btn btn-outline-secondary m-1"><i className="bi bi-chat-dots p-1"></i>{deta.comments}</button>
                                 </div>
                                 <div className="d-grid gap-2 mt-5">
-                                <button className="btn btn-primary btn-lg" type="button"><a className="text-white text-decoration-none" href={deta.largeImageURL} download={deta.largeImageURL}>Descargar</a><i className="bi bi-arrow-down p-1"></i></button>
+                                <button className="btn btn-primary btn-lg" type="button"><a className="text-white text-decoration-none" href={deta.largeImageURL} target="_blank" rel = "noreferrer">Descargar</a><i className="bi bi-arrow-down p-1"></i></button>
                                 </div>
                             </ContenedorInfo>
                         </div>

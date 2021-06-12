@@ -38,7 +38,7 @@ function App() {
       const url = `https://pixabay.com/api/?key=${key}&q=${busqueda}&image_type=photo&per_page=${imagenPorPagina}&page=${paginaActual}`
       const respuesta = await fetch(url);
       const resultado = await respuesta.json();
-      gurdarImagenes(resultado.hits)
+      gurdarImagenes(resultado.hits);
 
       //calcular total de paginas
       const calcularTotalPaginas = Math.ceil(resultado.totalHits / imagenPorPagina);
